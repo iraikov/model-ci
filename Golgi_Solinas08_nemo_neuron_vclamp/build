@@ -1,0 +1,23 @@
+#!/bin/sh
+
+MODEL_NAME=$1
+BUILD_DIR=$2
+
+NEMO={{NEMO}}
+NEURON_DIR={{NEURON_DIR}}
+
+cd $BUILD_DIR
+
+echo $NEMO -p --nmodl --nmodl-method=derivimplicit --nmodl-kinetic=SK2_z Golgi_Solinas08.nemo
+$NEMO -p --nmodl --nmodl-method=derivimplicit --nmodl-kinetic=SK2_z Golgi_Solinas08.nemo
+
+echo $NEMO -p --vclamp-hoc Golgi_Solinas08.nemo
+$NEMO -p --vclamp-hoc Golgi_Solinas08.nemo
+
+echo $NEMO -p --template=.hoc Golgi_Solinas08.nemo
+$NEMO -p --template=.hoc Golgi_Solinas08.nemo
+
+
+echo $NEURON_DIR/bin/nrnivmodl
+$NEURON_DIR/bin/nrnivmodl
+

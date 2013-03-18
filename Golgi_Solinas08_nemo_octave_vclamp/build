@@ -1,0 +1,15 @@
+#!/bin/sh
+
+MODEL_NAME=$1
+BUILD_DIR=$2
+
+NEMO={{NEMO}}
+
+cd $BUILD_DIR
+
+
+echo $NEMO -p --octave --octave-method=odepkg Golgi_Solinas08.nemo
+$NEMO -p --octave --octave-method=odepkg Golgi_Solinas08.nemo
+
+echo $NEMO -p --vclamp-octave Golgi_Solinas08.nemo
+$NEMO -p --vclamp-octave Golgi_Solinas08.nemo

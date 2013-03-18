@@ -1,0 +1,12 @@
+#!/bin/sh
+
+MODEL_NAME=$1
+BUILD_DIR=$2
+
+NEST_DIR={{NEST_DIR}}
+
+cd $BUILD_DIR
+LD_LIBRARY_PATH=$NEST_DIR/lib/nest $NEST_DIR/bin/nest Golgi_testrun.sli
+
+
+

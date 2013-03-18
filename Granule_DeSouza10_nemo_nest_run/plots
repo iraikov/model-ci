@@ -1,0 +1,56 @@
+#! /home/igr/bin/chicken/bin/csi -script
+
+(use srfi-1 posix ploticus)
+
+(let ((args (command-line-arguments)))
+
+  (let (
+	(model-name (first args))
+	(build-dir (second args))
+	)
+    (change-directory build-dir)   
+    (init 'png (sprintf "~A.png" model-name))
+
+    (arg "-maxrows"     "800020")
+    (arg "-maxfields"   "4500000")
+    (arg "-maxvector"   "4500000")
+    
+    (proc "getdata"
+	  `(("file"            . ,(sprintf "~A.dat" "voltmeter-2-0"))
+	    ("fieldnames"      . "i time V")
+	    ))
+
+   (proc "areadef"
+	 `(("title"           . "Golgi cell (DeSouza 2010)")
+	   ("titledetails"    . "size=14  align=C")
+	   ("rectangle"       . "1 1 8 4")
+	   ("xrange"          . "0 2100")
+	   ("yrange"          . "-80 40")
+	   ))
+
+
+   (proc "yaxis"
+	 `(("stubs"     . "inc 10")
+	   ("gridskip"  . "min")
+	   ))
+
+   (proc "xaxis"
+	 `(("stubs"     . "inc 100")
+	   ("gridskip"  . "min")
+	   
+	   ))
+
+   (proc "lineplot"
+	 `(("xfield"      . "time")
+	   ("yfield"      . "V")
+	   ("linedetails" . "color=red width=.5")
+	   ("legendlabel" . "V")
+	   ))
+   
+   (proc "legend"
+	 `(("location" . "max-1 max")
+	   ("seglen"   . "0.2")
+	   ))
+   
+   (end)
+   ))

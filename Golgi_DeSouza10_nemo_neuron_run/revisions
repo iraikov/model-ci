@@ -1,0 +1,4 @@
+#!/bin/sh
+
+svn info --username=anonymous --password=''   https://code.call-cc.org/svn/chicken-eggs/release/4/nemo/trunk/examples/Golgi/Golgi_DeSouza10.nemo | grep Revision: | cut -f2 -d:
+

@@ -1,0 +1,17 @@
+#!/bin/sh
+
+MODEL_NAME=$1
+BUILD_DIR=$2
+
+NEMO={{NEMO}}
+
+cd $BUILD_DIR
+
+echo $NEMO -p --nmodl --nmodl-method=derivimplicit --nmodl-kinetic=Na_z Granule_DeSouza10.nemo
+$NEMO -p --nmodl --nmodl-method=derivimplicit --nmodl-kinetic=Na_z Granule_DeSouza10.nemo
+
+$NEURON_DIR/bin/nrnivmodl
+
+
+
+

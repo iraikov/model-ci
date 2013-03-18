@@ -1,0 +1,68 @@
+#!/bin/sh
+
+MODEL_NAME=$1
+BUILD_DIR=$2
+
+NEMO={{NEMO}}
+NEST_DIR={{NEST_DIR}}
+
+cd $BUILD_DIR
+
+echo $NEMO --nest --nest-method=cvode Granule_DeSouza10.nemo
+$NEMO --nest --nest-method=cvode Granule_DeSouza10.nemo
+
+echo $NEMO --template=nestmodule_bootstrap.sh Granule_DeSouza10.nemo
+$NEMO --template=nestmodule_bootstrap.sh Granule_DeSouza10.nemo
+
+echo $NEMO --template=nestmodule_configure.ac Granule_DeSouza10.nemo
+$NEMO --template=nestmodule_configure.ac Granule_DeSouza10.nemo
+
+echo $NEMO --template=nestmodule_makefile.am Granule_DeSouza10.nemo
+$NEMO --template=nestmodule_makefile.am Granule_DeSouza10.nemo
+
+echo $NEMO --template=nestmodule.cpp Granule_DeSouza10.nemo
+$NEMO --template=nestmodule.cpp Granule_DeSouza10.nemo
+
+echo $NEMO --template=nestmodule.h Granule_DeSouza10.nemo
+$NEMO --template=nestmodule.h Granule_DeSouza10.nemo
+
+echo $NEMO --template=drop_odd_spike_connection.h Granule_DeSouza10.nemo
+$NEMO --template=drop_odd_spike_connection.h Granule_DeSouza10.nemo
+
+echo $NEMO --template=granulemodule.sli Granule_DeSouza10.nemo
+$NEMO --template=granulemodule.sli Granule_DeSouza10.nemo
+
+echo $NEMO --template=testrun.sli Granule_DeSouza10.nemo
+$NEMO --template=testrun.sli Granule_DeSouza10.nemo
+
+echo mv Granule_drop_odd_spike_connection.h drop_odd_spike_connection.h
+mv Granule_drop_odd_spike_connection.h drop_odd_spike_connection.h
+
+echo mv Granule_nestmodule_bootstrap.sh  bootstrap.sh 
+mv Granule_nestmodule_bootstrap.sh  bootstrap.sh 
+
+echo mv Granule_nestmodule_configure.ac  configure.ac
+mv Granule_nestmodule_configure.ac  configure.ac
+
+echo mv Granule_nestmodule_makefile.am   Makefile.am
+mv Granule_nestmodule_makefile.am   Makefile.am
+
+echo mv Granule_nestmodule.cpp           granulemodule.cpp
+mv Granule_nestmodule.cpp           granulemodule.cpp
+
+echo mv Granule_nestmodule.h             granulemodule.h
+mv Granule_nestmodule.h             granulemodule.h
+
+echo mv Granule_granulemodule.sli          granulemodule.sli
+mv Granule_granulemodule.sli          granulemodule.sli
+
+chmod u+x bootstrap.sh
+
+./bootstrap.sh && \
+./configure --with-nest=$NEST_DIR/bin/nest-config && \
+make && \
+make install
+
+
+
+
