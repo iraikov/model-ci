@@ -1,4 +1,4 @@
-#! {{CHICKEN_HOME}}/bin/csi -script
+#! {{CHICKEN_DIR}}/bin/csi -script
 
 (use srfi-1 posix ploticus)
 

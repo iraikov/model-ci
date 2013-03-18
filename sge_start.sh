@@ -6,8 +6,8 @@ tmpdir=$HOME/work/tmp/model-ci.${TIMESTAMP}
 echo "Creating $tmpdir"
 mkdir -p ${tmpdir}
 
-echo $HOME/bin/chicken/bin/chicken-install testdrive nemo
-$HOME/bin/chicken/bin/chicken-install testdrive nemo
+#echo $HOME/bin/chicken/bin/chicken-install testdrive nemo
+#$HOME/bin/chicken/bin/chicken-install testdrive nemo
 
 echo cp -PR $HOME/src/model/model-ci/* ${tmpdir} && \
 cp -PR $HOME/src/model/model-ci/* ${tmpdir} && \

@@ -5,6 +5,7 @@ BUILD_DIR=$2
 
 NEMO={{NEMO}}
 NEST_DIR={{NEST_DIR}}
+SUNDIALS_DIR={{SUNDIALS_DIR}}
 
 cd $BUILD_DIR
 
@@ -59,7 +60,7 @@ mv Granule_granulemodule.sli          granulemodule.sli
 chmod u+x bootstrap.sh
 
 ./bootstrap.sh && \
-./configure --with-nest=$NEST_DIR/bin/nest-config && \
+./configure --with-nest=$NEST_DIR/bin/nest-config --with-sundials=$SUNDIALS_DIR/bin/sundials-config && \
 make && \
 make install
 

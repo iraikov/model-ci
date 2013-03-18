@@ -13,8 +13,8 @@
 # Name of the queue
 #$ -q short
 
-# Request 4G of memory per task
-#$ -l h_vmem=4G
+# Request 8G of memory per task
+#$ -l h_vmem=8G
 
 # Export the following env variables:
 #$ -v HOME
