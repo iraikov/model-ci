@@ -29,4 +29,6 @@ time $HOME/bin/chicken/bin/testdrive SHAREDDIR/model-ci.tombo.config
 
 echo "============== model-ci has ended ===============" 
 
+$HOME/bin/chicken/bin/hyde
+
 
