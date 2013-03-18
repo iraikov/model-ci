@@ -25,7 +25,7 @@
 echo "============== Starting model-ci ===============" 
 cd SHAREDDIR
 
-time $HOME/bin/chicken/bin/csi -s SHAREDDIR/model-ci.scm SHAREDDIR/model-ci.tombo.config 
+time $HOME/bin/chicken/bin/testdrive SHAREDDIR/model-ci.tombo.config 
 
 echo "============== model-ci has ended ===============" 
 
