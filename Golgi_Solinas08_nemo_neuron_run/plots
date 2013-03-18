@@ -1,4 +1,4 @@
-#! /home/igr/bin/chicken/bin/csi -script
+#! {{CHICKEN_HOME}}/bin/csi -script
 
 (use srfi-1 posix ploticus)
 
