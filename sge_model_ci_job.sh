@@ -29,6 +29,8 @@ time $HOME/bin/chicken/bin/testdrive SHAREDDIR/model-ci.tombo.config
 
 echo "============== model-ci has ended ===============" 
 
+TIMESTAMP=`date +%a%d%b``
+cd SHAREDDIR/output/$TIMESTAMP
 $HOME/bin/chicken/bin/hyde
 
 
