@@ -30,7 +30,7 @@
 	   ))
 
    (proc "xaxis"
-	 `(("stubs"     . "inc 100")
+	 `(("stubs"     . "inc 500")
 	   ("gridskip"  . "min")
 	   
 	   ))
