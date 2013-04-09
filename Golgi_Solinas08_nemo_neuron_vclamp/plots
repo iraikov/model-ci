@@ -36,7 +36,7 @@ plot(KA(:,1),KA(:,2),'linewidth',2);
 title ("KA current");
 
 subplot(3,4,6);
-plot(KCa(:,1),KCa(:,2)'linewidth',2);
+plot(KCa(:,1),KCa(:,2),'linewidth',2);
 title ("KCa current");
 
 subplot(3,4,7);
@@ -52,7 +52,7 @@ plot(SK2(:,1),SK2(:,2),'linewidth',2);
 title ("SK2 current");
 
 subplot(3,4,10);
-plot(Na(:,1),Na(:,2)'linewidth',2);
+plot(Na(:,1),Na(:,2),'linewidth',2);
 title ("Na current");
 
 subplot(3,4,11);
