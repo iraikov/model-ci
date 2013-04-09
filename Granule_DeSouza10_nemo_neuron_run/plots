@@ -16,15 +16,15 @@
     (arg "-maxvector"   "4500000")
     
     (proc "getdata"
-	  `(("file"            . ,(sprintf "~A.dat" "voltmeter-2-0"))
-	    ("fieldnames"      . "i time V")
+	  `(("file"            . ,(sprintf "~A.dat" "Granule"))
+	    ("fieldnames"      . "time V")
 	    ))
 
    (proc "areadef"
-	 `(("title"           . "Golgi cell (DeSouza 2010)")
+	 `(("title"           . "Granule cell (DeSouza 2010)")
 	   ("titledetails"    . "size=14  align=C")
 	   ("rectangle"       . "1 1 8 4")
-	   ("xrange"          . "0 2100")
+	   ("xrange"          . "0 3000")
 	   ("yrange"          . "-80 40")
 	   ))
 

@@ -17,11 +17,11 @@
 	    ))
 
    (proc "areadef"
-	 `(("title"           . "Golgi (DeSouza 2010)")
+	 `(("title"           . "DeSouza 2010 Golgi cell in NEURON")
 	   ("titledetails"    . "size=14  align=C")
 	   ("rectangle"       . "1 1 8 4")
-	   ("xrange"          . "0 2100")
-	   ("yrange"          . "-80 40")
+	   ("xrange"          . "0 3000")
+	   ("yrange"          . "-80 65")
 	   ))
 
 

@@ -1,0 +1,66 @@
+#! /usr/bin/octave
+
+graphics_toolkit("gnuplot");
+
+CaHVA       = load ("CaHVA.dat");
+CaLVA       = load ("CaLVA.dat");
+HCN1        = load ("HCN1.dat");
+HCN2        = load ("HCN2.dat");
+KA          = load ("KA.dat");
+KCa         = load ("KCa.dat");
+KM          = load ("KM.dat");
+KV          = load ("KV.dat");
+SK2         = load ("SK2.dat");
+Na          = load ("Na.dat");
+NaR0        = load ("NaR.dat");
+NaP0        = load ("NaP.dat");
+
+subplot(3,4,1);
+plot(CaHVA(:,1),CaHVA(:,2),'linewidth',2);
+title ("CaHVA current");
+
+subplot(3,4,2);
+plot(CaLVA(:,1),CaLVA(:,2),'linewidth',2);
+title ("CaLVA current");
+
+subplot(3,4,3);
+plot(HCN1(:,1),HCN1(:,2),'linewidth',2);
+title ("HCN1 current");
+
+subplot(3,4,4);
+plot(HCN2(:,1),HCN2(:,2),'linewidth',2);
+title ("HCN2 current");
+
+subplot(3,4,5);
+plot(KA(:,1),KA(:,2),'linewidth',2);
+title ("KA current");
+
+subplot(3,4,6);
+plot(KCa(:,1),KCa(:,2)'linewidth',2);
+title ("KCa current");
+
+subplot(3,4,7);
+plot(KM(:,1),KM(:,2),'linewidth',2);
+title ("KM current");
+
+subplot(3,4,8);
+plot(KV(:,1),KV(:,2),'linewidth',2);
+title ("KV current");
+
+subplot(3,4,9);
+plot(SK2(:,1),SK2(:,2),'linewidth',2);
+title ("SK2 current");
+
+subplot(3,4,10);
+plot(Na(:,1),Na(:,2)'linewidth',2);
+title ("Na current");
+
+subplot(3,4,11);
+plot(NaR(:,1),NaR(:,2),'linewidth',2);
+title ("NaR current");
+
+subplot(3,4,12);
+plot(NaP(:,1),NaP(:,2),'linewidth',2);
+title ("NaP current");
+
+print  ("Golgi_Solinas08_NEURON_Vclamp.png", "-dpng");
