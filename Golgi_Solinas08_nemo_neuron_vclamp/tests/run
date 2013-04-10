@@ -5,5 +5,7 @@ BUILD_DIR=$2
 
 cd $BUILD_DIR
 
-echo for name in *_vclamp.hoc; do nrngui -nogui $name -c "quit()"; done
-for name in *_vclamp.hoc; do nrngui -nogui $name -c "quit()"; done
+for name in *_vclamp.hoc; do 
+  echo nrngui -nogui $name -c "quit()"; 
+  nrngui -nogui $name -c "quit()"; 
+done
