@@ -4,6 +4,7 @@ MODEL_NAME=$1
 BUILD_DIR=$2
 
 NEMO={{NEMO}}
+OCTAVEPP={{OCTAVEPP}}
 
 cd $BUILD_DIR
 
@@ -14,8 +15,10 @@ $NEMO -p --octave --octave-method=odepkg Golgi_Solinas08.nemo
 echo $NEMO -p --vclamp-octave Golgi_Solinas08.nemo
 $NEMO -p --vclamp-octave Golgi_Solinas08.nemo
 
+if test -x "$OCTAVEPP"; then
 for name in *.m; do 
-    awk -vRS='%}' '{gsub(/%{.*/,"")}1' > $name.tmp;
+    cat $name | $OCTAVEPP > $name.tmp;
     cat $name.tmp > $name
     rm $name.tmp
 done
+fi

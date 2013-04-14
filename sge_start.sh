@@ -10,9 +10,11 @@ mkdir -p ${tmpdir}
 #$HOME/bin/chicken/bin/chicken-install testdrive nemo
 
 echo cp -PR $HOME/src/model/model-ci/* ${tmpdir} && \
-cp -PR $HOME/src/model/model-ci/* ${tmpdir} && \
+cp -PR $HOME/src/model/model-ci/* ${tmpdir}
+
 echo sed s#SHAREDDIR#${tmpdir}#g sge_model_ci_job.sh >${tmpdir}/sge_model_ci_job.sh && \
-sed s#SHAREDDIR#${tmpdir}#g sge_model_ci_job.sh >${tmpdir}/sge_model_ci_job.sh && \
+sed s#SHAREDDIR#${tmpdir}#g sge_model_ci_job.sh >${tmpdir}/sge_model_ci_job.sh
+
 echo sed s#SHAREDDIR#${tmpdir}#g $HOME/src/model/model-ci/model-ci.tombo.config > \
  ${tmpdir}/model-ci.tombo.config && \
 sed s#SHAREDDIR#${tmpdir}#g $HOME/src/model/model-ci/model-ci.tombo.config > \

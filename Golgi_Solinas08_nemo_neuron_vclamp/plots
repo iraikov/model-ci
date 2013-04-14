@@ -1,7 +1,5 @@
 #! /usr/bin/octave
 
-graphics_toolkit("gnuplot");
-
 args = argv ();
 
 model_name = args{1};
