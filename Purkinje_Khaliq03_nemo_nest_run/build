@@ -1,0 +1,44 @@
+#!/bin/sh
+
+MODEL_NAME=$1
+BUILD_DIR=$2
+
+NEMO={{NEMO}}
+NEST_DIR={{NEST_DIR}}
+SUNDIALS_DIR={{SUNDIALS_DIR}}
+
+cd $BUILD_DIR
+
+echo $NEMO --nest --nest-method=cvode Purkinje_Khaliq03.nemo
+$NEMO --nest --nest-method=cvode Purkinje_Khaliq03.nemo
+
+echo $NEMO --template=nestmodule_bootstrap.sh --template=nestmodule_configure.ac --template=nestmodule_makefile.am  --template=nestmodule.cpp --template=nestmodule.h --template=drop_odd_spike_connection.h --template=module.sli --template=testrun.sli  Purkinje_Khaliq03.nemo
+$NEMO --template=nestmodule_bootstrap.sh --template=nestmodule_configure.ac --template=nestmodule_makefile.am  --template=nestmodule.cpp --template=nestmodule.h --template=drop_odd_spike_connection.h --template=module.sli --template=testrun.sli  Purkinje_Khaliq03.nemo
+
+echo mv Khaliq03_drop_odd_spike_connection.h drop_odd_spike_connection.h
+mv Khaliq03_drop_odd_spike_connection.h drop_odd_spike_connection.h
+
+echo mv Khaliq03_nestmodule_bootstrap.sh  bootstrap.sh 
+mv Khaliq03_nestmodule_bootstrap.sh  bootstrap.sh 
+
+echo mv Khaliq03_nestmodule_configure.ac  configure.ac
+mv Khaliq03_nestmodule_configure.ac  configure.ac
+
+echo mv Khaliq03_nestmodule_makefile.am   Makefile.am
+mv Khaliq03_nestmodule_makefile.am   Makefile.am
+
+echo mv Khaliq03_nestmodule.cpp      Khaliq03module.cpp
+mv Khaliq03_nestmodule.cpp           Khaliq03module.cpp
+
+echo mv Khaliq03_nestmodule.h        Khaliq03module.h
+mv Khaliq03_nestmodule.h             Khaliq03module.h
+
+echo mv Khaliq03_nestmodule.sli     Khaliq03module.sli
+mv Khaliq03_nestmodule.sli          Khaliq03module.sli
+
+chmod u+x bootstrap.sh
+
+./bootstrap.sh && \
+./configure --with-nest=$NEST_DIR/bin/nest-config --with-sundials=$SUNDIALS_DIR/bin/sundials-config && \
+make && \
+make install
