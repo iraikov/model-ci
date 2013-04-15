@@ -22,6 +22,10 @@ Na          = load ("Na.dat");
 NaR         = load ("NaR.dat");
 NaP         = load ("NaP.dat");
 
+figure();
+
+title ("Solinas 2008 Golgi cell voltage clamp (Octave)");
+
 subplot(3,4,1);
 plot(CaHVA(:,1),CaHVA(:,2),'linewidth',2);
 title ("CaHVA current");
@@ -70,4 +74,4 @@ subplot(3,4,12);
 plot(NaP(:,1),NaP(:,2),'linewidth',2);
 title ("NaP current");
 
-print  ("Golgi_Solinas08_Octave_Vclamp.png", "-dpng");
+print  ("Golgi_Solinas08_Octave_Vclamp.png", "-dpng", "-S1024,768");
