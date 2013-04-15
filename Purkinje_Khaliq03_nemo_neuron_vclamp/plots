@@ -1,0 +1,57 @@
+#! /usr/bin/octave
+
+args = argv ();
+
+model_name = args{1};
+build_dir  = args{2};
+
+cd (build_dir);
+
+setenv('GNUTERM','unknown');
+
+CaBK        = load ("CaBK_ca.dat");
+CaP         = load ("CaP.dat");
+K1          = load ("K1.dat");
+K2          = load ("K2.dat");
+K3          = load ("K3.dat");
+Ih          = load ("Ih.dat");
+Narsg       = load ("Narsg.dat");
+Leak        = load ("Leak.dat");
+
+figure();
+
+title ("Khaliq 2003 Purkinje cell voltage clamp (NEURON)");
+
+subplot(3,3,1);
+plot(CaBK(:,1),CaBK(:,2),'linewidth',2);
+title ("CaBK current");
+
+subplot(3,3,2);
+plot(CaP(:,1),CaP(:,2),'linewidth',2);
+title ("CaP current");
+
+subplot(3,3,3);
+plot(K1(:,1),K1(:,2),'linewidth',2);
+title ("K1 current");
+
+subplot(3,3,4);
+plot(K2(:,1),K2(:,2),'linewidth',2);
+title ("K2 current");
+
+subplot(3,3,5);
+plot(K3(:,1),K3(:,2),'linewidth',2);
+title ("K3 current");
+
+subplot(3,3,6);
+plot(Narsg(:,1),Narsg(:,2),'linewidth',2);
+title ("Narsg current");
+
+subplot(3,3,6);
+plot(Ih(:,1),Ih(:,2),'linewidth',2);
+title ("Ih current");
+
+subplot(3,3,7);
+plot(Leak(:,1),Leak(:,2),'linewidth',2);
+title ("Leak current");
+
+print  ("Purkinje_Khaliq03_NEURON_Vclamp.png", "-dpng", "-S1024,768", "-FCourier");
