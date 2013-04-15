@@ -9,7 +9,7 @@ NEURON_DIR={{NEURON_DIR}}
 cd $BUILD_DIR
 
 echo $NEMO -p --nmodl --nmodl-method=derivimplicit --nmodl-kinetic=Narsg_z Purkinje_Khaliq03.nemo
-$NEMO -p --nmodl --nmodl-method=derivimplicit --nmodl-kinetic=SK2_z Purkinje_Khaliq03.nemo
+$NEMO -p --nmodl --nmodl-method=derivimplicit --nmodl-kinetic=Narsg_z Purkinje_Khaliq03.nemo
 
 echo $NEMO -p --vclamp-hoc Purkinje_Khaliq03.nemo
 $NEMO -p --vclamp-hoc Purkinje_Khaliq03.nemo
