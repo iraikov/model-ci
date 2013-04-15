@@ -74,4 +74,4 @@ subplot(3,4,12);
 plot(NaP(:,1),NaP(:,2),'linewidth',2);
 title ("NaP current");
 
-print  ("Golgi_Solinas08_Octave_Vclamp.png", "-dpng", "-S1024,768");
+print  ("Golgi_Solinas08_Octave_Vclamp.png", "-dpng", "-S1024,768", "-FCourier");
