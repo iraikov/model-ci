@@ -33,8 +33,8 @@ mv Khaliq03_nestmodule.cpp           Khaliq03module.cpp
 echo mv Khaliq03_nestmodule.h        Khaliq03module.h
 mv Khaliq03_nestmodule.h             Khaliq03module.h
 
-echo mv Khaliq03_nestmodule.sli     Khaliq03module.sli
-mv Khaliq03_nestmodule.sli          Khaliq03module.sli
+echo mv Khaliq03_module.sli     Khaliq03module.sli
+mv Khaliq03_module.sli          Khaliq03module.sli
 
 chmod u+x bootstrap.sh
 
