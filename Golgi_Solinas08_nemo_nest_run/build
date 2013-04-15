@@ -32,7 +32,7 @@ mv Golgi_golgimodule.sli          golgimodule.sli
 chmod u+x bootstrap.sh
 
 ./bootstrap.sh && \
-./configure --with-nest=$NEST_DIR/bin/nest-config -with-sundials=$SUNDIALS_DIR/bin/sundials-config && \
+./configure --with-nest=$NEST_DIR/bin/nest-config --with-sundials=$SUNDIALS_DIR/bin/sundials-config && \
 make && \
 make install
 

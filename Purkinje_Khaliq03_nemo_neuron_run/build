@@ -1,0 +1,18 @@
+#!/bin/sh
+
+MODEL_NAME=$1
+BUILD_DIR=$2
+
+NEMO={{NEMO}}
+NEURON_DIR={{NEURON_DIR}}
+
+cd $BUILD_DIR
+
+echo $NEMO -p --nmodl --nmodl-method=derivimplicit --nmodl-kinetic=Narsg_z Purkinje_Khaliq03.nemo
+$NEMO -p --nmodl --nmodl-method=derivimplicit --nmodl-kinetic=Narsg_z Purkinje_Khaliq03.nemo
+
+echo $NEMO --template=template.hoc --template=neuron_run.hoc Purkinje_Khaliq03.nemo
+$NEMO --template=template.hoc --template=neuron_run.hoc Purkinje_Khaliq03.nemo
+
+echo $NEURON_DIR/bin/nrnivmodl
+$NEURON_DIR/bin/nrnivmodl
