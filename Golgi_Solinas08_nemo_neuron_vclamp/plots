@@ -7,6 +7,8 @@ build_dir  = args{2};
 
 cd (build_dir);
 
+setenv('GNUTERM','unknown');
+
 CaHVA       = load ("CaHVA.dat");
 CaLVA       = load ("CaLVA.dat");
 HCN1        = load ("HCN1.dat");

@@ -1,13 +1,13 @@
 #! /usr/bin/octave
 
-graphics_toolkit("gnuplot");
-
 args = argv ();
 
 model_name = args{1};
 build_dir  = args{2};
 
 cd (build_dir);
+
+setenv('GNUTERM','unknown');
 
 CaHVA       = load ("CaHVA.dat");
 CaLVA       = load ("CaLVA.dat");
@@ -70,4 +70,4 @@ subplot(3,4,12);
 plot(NaP(:,1),NaP(:,2),'linewidth',2);
 title ("NaP current");
 
-print  ("Golgi_Solinas08_NEURON_Vclamp.png", "-dpng");
+print  ("Golgi_Solinas08_Octave_Vclamp.png", "-dpng");
