@@ -16,7 +16,6 @@ K2          = load ("K2.dat");
 K3          = load ("K3.dat");
 Ih          = load ("Ih.dat");
 Narsg       = load ("Narsg.dat");
-Leak        = load ("Leak.dat");
 
 figure();
 
@@ -46,12 +45,8 @@ subplot(3,3,6);
 plot(Narsg(:,1),Narsg(:,2),'linewidth',2);
 title ("Narsg current");
 
-subplot(3,3,6);
+subplot(3,3,7);
 plot(Ih(:,1),Ih(:,2),'linewidth',2);
 title ("Ih current");
-
-subplot(3,3,7);
-plot(Leak(:,1),Leak(:,2),'linewidth',2);
-title ("Leak current");
 
 print  ("Purkinje_Khaliq03_Octave_Vclamp.png", "-dpng", "-S1024,768", "-FCourier");
