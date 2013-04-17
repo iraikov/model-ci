@@ -1,0 +1,24 @@
+#!/bin/sh
+
+MODEL_NAME=$1
+BUILD_DIR=$2
+
+NEMO={{NEMO}}
+OCTAVEPP={{OCTAVEPP}}
+
+cd $BUILD_DIR
+
+
+echo $NEMO -p --octave --octave-method=odepkg Purkinje_Khaliq03.nemo
+$NEMO -p --octave --octave-method=odepkg Purkinje_Khaliq03.nemo
+
+echo $NEMO -p --vclamp-octave Purkinje_Khaliq03.nemo
+$NEMO -p --vclamp-octave Purkinje_Khaliq03.nemo
+
+if test -x "$OCTAVEPP"; then
+for name in *.m; do 
+    cat $name | $OCTAVEPP > $name.tmp;
+    cat $name.tmp > $name
+    rm $name.tmp
+done
+fi
