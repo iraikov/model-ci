@@ -16,7 +16,7 @@
     (arg "-maxvector"   "4500000")
     
     (proc "getdata"
-	  `(("file"            . ,(sprintf "~A.dat" "voltmeter-2-0"))
+	  `(("file"            . ,(sprintf "~A.dat" "voltmeter-3-0"))
 	    ("fieldnames"      . "i time V")
 	    ))
 
