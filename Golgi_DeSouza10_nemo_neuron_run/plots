@@ -2,7 +2,7 @@
 
 (use srfi-1 posix ploticus)
 
-(define (plot-trace model-name trace-file build-dir)
+(define (plot-trace model-name title trace-file build-dir)
 
     (change-directory build-dir)   
     (init 'png (sprintf "~A.png" model-name))
@@ -17,10 +17,10 @@
 	    ))
 
    (proc "areadef"
-	 `(("title"           . "DeSouza 2010 Golgi cell in NEURON")
+	 `(("title"           . ,title)
 	   ("titledetails"    . "size=14  align=C")
 	   ("rectangle"       . "1 1 8 4")
-	   ("xrange"          . "0 3000")
+	   ("xrange"          . "0 6100")
 	   ("yrange"          . "-80 65")
 	   ))
 
@@ -59,7 +59,7 @@
 	(build-dir (second args))
 	)	   
 			
-    (plot-trace "Golgi_protocol" "Golgi_protocol.dat" build-dir)
-    (plot-trace "Golgi_reduced_protocol" "Golgi_reduced_protocol.dat" build-dir)
+    (plot-trace "Golgi_protocol" "DeSouza 2010 Golgi cell in NEURON" "Golgi_protocol.dat" build-dir)
+    (plot-trace "Golgi_reduced_protocol" "DeSouza 2010 Golgi cell in NEURON (soma)" "Golgi_reduced_protocol.dat" build-dir)
 
     ))
