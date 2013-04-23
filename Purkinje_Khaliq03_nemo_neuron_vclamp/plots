@@ -1,52 +1,96 @@
-#! /usr/bin/octave
+#! {{CHICKEN_DIR}}/bin/csi -script
 
-args = argv ();
+(use srfi-1 posix ploticus)
 
-model_name = args{1};
-build_dir  = args{2};
+(define (plot-traces model-name title trace-names nrows build-dir)
 
-cd (build_dir);
+    (init 'png (sprintf "~A.png" model-name))
 
-setenv('GNUTERM','unknown');
+    (arg "-cpulimit" "90" )
 
-CaBK        = load ("CaBK.dat");
-CaP         = load ("CaP.dat");
-K1          = load ("K1.dat");
-K2          = load ("K2.dat");
-K3          = load ("K3.dat");
-Ih          = load ("Ih.dat");
-Narsg       = load ("Narsg.dat");
+    (arg "-cm" )
+    (arg "-pagesize"    "30,20")
+    (arg "-maxrows"     "5200500")
+    (arg "-maxfields"   "10400100")
+    (arg "-maxvector"   "20000000")
 
-figure();
+    (proc "page"
+          `(("title"            . ,title)
+            ))
 
-title ("Khaliq 2003 Purkinje cell voltage clamp (NEURON)");
+    (fold
+     (lambda (trace-name ij)
 
-subplot(3,3,1);
-plot(CaBK(:,1),CaBK(:,2),'linewidth',2);
-title ("CaBK current");
+       (let ((trace-file (sprintf "~A.dat" trace-name))
+             (i (car ij)) (j (cadr ij)))
 
-subplot(3,3,2);
-plot(CaP(:,1),CaP(:,2),'linewidth',2);
-title ("CaP current");
+         (proc "getdata"
+               `(("file"            . ,trace-file)
+                 ("fieldnames"      . "time I")
+                 ))
 
-subplot(3,3,3);
-plot(K1(:,1),K1(:,2),'linewidth',2);
-title ("K1 current");
+         (printf "~A getdata finished " trace-name)
 
-subplot(3,3,4);
-plot(K2(:,1),K2(:,2),'linewidth',2);
-title ("K2 current");
+         (proc "areadef"
+               `(("title"           . ,trace-name)
+                 ("titledetails"    . "size=14  align=C")
+                 ("rectangle"       . ,(let* ((x1 (+ 2 (* 6 i)))
+                                              (x2 (+ 4 x1))
+                                              (y1 (+ 3 (* 5 j)))
+                                              (y2 (+ 3.5 y1)))
+                                         (printf "(coordinates ~A ~A ~A ~A)~%" x1 y1 x2 y2)
+                                         (sprintf "~A ~A ~A ~A" x1 y1 x2 y2)))
+                 ("xautorange"      . "datafield=time")
+                 ("yautorange"      . "datafield=I")
+                 ))
 
-subplot(3,3,5);
-plot(K3(:,1),K3(:,2),'linewidth',2);
-title ("K3 current");
+         (proc "yaxis"
+               `(("stubs"     . "inc")
+                 ("gridskip"  . "min")
+                 ))
 
-subplot(3,3,6);
-plot(Narsg(:,1),Narsg(:,2),'linewidth',2);
-title ("Narsg current");
+         (proc "xaxis"
+               `(("stubs"     . "inc 100")
+                 ("gridskip"  . "min")
+                 ))
 
-subplot(3,3,7);
-plot(Ih(:,1),Ih(:,2),'linewidth',2);
-title ("Ih current");
+         (proc "lineplot"
+               `(("xfield"      . "time")
+                 ("yfield"      . "I")
+                 ("linedetails" . "color=blue width=.7")
+                 ))
+   
+         (proc "legend"
+               `(("location" . "max-1 max")
+                 ("seglen"   . "0.2")
+                 ))
+         
+         
+         (if (< i (- nrows 1))
+             (list (+ 1 i) j)
+             (list 0 (+ 1 j)))
 
-print  ("Purkinje_Khaliq03_NEURON_Vclamp.png", "-dpng", "-S1024,768", "-FCourier");
+         )
+       )
+
+     (list 0 0)
+     trace-names)
+
+    (end)
+    )
+
+
+(let ((args (command-line-arguments)))
+
+  (let (
+	(model-name (first args))
+	(build-dir (second args))
+	)	   
+    (change-directory build-dir)
+            
+    (plot-traces model-name
+                 "Purkinje Khaliq 03 voltage clamp (NEURON)" 
+                '(CaBK CaP K1 K2 K3 Ih Narsg)
+                3 build-dir)
+
+    ))

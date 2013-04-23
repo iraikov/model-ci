@@ -1,0 +1,14 @@
+#!/bin/sh
+
+MODEL_NAME=$1
+BUILD_DIR=$2
+
+NEST_DIR={{NEST_DIR}}
+
+cd $BUILD_DIR
+
+echo LD_LIBRARY_PATH=$NEST_DIR/lib/nest time $NEST_DIR/bin/nest Granule_testrun.sli
+LD_LIBRARY_PATH=$NEST_DIR/lib/nest time $NEST_DIR/bin/nest Granule_testrun.sli
+
+
+

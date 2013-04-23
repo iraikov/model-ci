@@ -1,77 +1,96 @@
-#! /usr/bin/octave
+#! {{CHICKEN_DIR}}/bin/csi -script
 
-args = argv ();
+(use srfi-1 posix ploticus)
 
-model_name = args{1};
-build_dir  = args{2};
+(define (plot-traces model-name title trace-names nrows build-dir)
 
-cd (build_dir);
+    (init 'png (sprintf "~A.png" model-name))
 
-setenv('GNUTERM','unknown');
+    (arg "-cpulimit" "90" )
 
-CaHVA       = load ("CaHVA.dat");
-CaLVA       = load ("CaLVA.dat");
-HCN1        = load ("HCN1.dat");
-HCN2        = load ("HCN2.dat");
-KA          = load ("KA.dat");
-KCa         = load ("KCa.dat");
-KM          = load ("KM.dat");
-KV          = load ("KV.dat");
-SK2         = load ("SK2.dat");
-Na          = load ("Na.dat");
-NaR         = load ("NaR.dat");
-NaP         = load ("NaP.dat");
+    (arg "-cm" )
+    (arg "-pagesize"    "30,20")
+    (arg "-maxrows"     "5200500")
+    (arg "-maxfields"   "10400100")
+    (arg "-maxvector"   "20000000")
 
-figure();
+    (proc "page"
+          `(("title"            . ,title)
+            ))
 
-title ("Solinas 2008 Golgi cell voltage clamp (NEURON)");
+    (fold
+     (lambda (trace-name ij)
 
-subplot(3,4,1);
-plot(CaHVA(:,1),CaHVA(:,2),'linewidth',2);
-title ("CaHVA current");
+       (let ((trace-file (sprintf "~A.dat" trace-name))
+             (i (car ij)) (j (cadr ij)))
 
-subplot(3,4,2);
-plot(CaLVA(:,1),CaLVA(:,2),'linewidth',2);
-title ("CaLVA current");
+         (proc "getdata"
+               `(("file"            . ,trace-file)
+                 ("fieldnames"      . "time I")
+                 ))
 
-subplot(3,4,3);
-plot(HCN1(:,1),HCN1(:,2),'linewidth',2);
-title ("HCN1 current");
+         (printf "~A getdata finished " trace-name)
 
-subplot(3,4,4);
-plot(HCN2(:,1),HCN2(:,2),'linewidth',2);
-title ("HCN2 current");
+         (proc "areadef"
+               `(("title"           . ,trace-name)
+                 ("titledetails"    . "size=14  align=C")
+                 ("rectangle"       . ,(let* ((x1 (+ 2 (* 6 i)))
+                                              (x2 (+ 4 x1))
+                                              (y1 (+ 3 (* 5 j)))
+                                              (y2 (+ 3.5 y1)))
+                                         (printf "(coordinates ~A ~A ~A ~A)~%" x1 y1 x2 y2)
+                                         (sprintf "~A ~A ~A ~A" x1 y1 x2 y2)))
+                 ("xautorange"      . "datafield=time")
+                 ("yautorange"      . "datafield=I")
+                 ))
 
-subplot(3,4,5);
-plot(KA(:,1),KA(:,2),'linewidth',2);
-title ("KA current");
+         (proc "yaxis"
+               `(("stubs"     . "inc")
+                 ("gridskip"  . "min")
+                 ))
 
-subplot(3,4,6);
-plot(KCa(:,1),KCa(:,2),'linewidth',2);
-title ("KCa current");
+         (proc "xaxis"
+               `(("stubs"     . "inc 100")
+                 ("gridskip"  . "min")
+                 ))
 
-subplot(3,4,7);
-plot(KM(:,1),KM(:,2),'linewidth',2);
-title ("KM current");
+         (proc "lineplot"
+               `(("xfield"      . "time")
+                 ("yfield"      . "I")
+                 ("linedetails" . "color=blue width=.7")
+                 ))
+   
+         (proc "legend"
+               `(("location" . "max-1 max")
+                 ("seglen"   . "0.2")
+                 ))
+         
+         
+         (if (< i (- nrows 1))
+             (list (+ 1 i) j)
+             (list 0 (+ 1 j)))
 
-subplot(3,4,8);
-plot(KV(:,1),KV(:,2),'linewidth',2);
-title ("KV current");
+         )
+       )
 
-subplot(3,4,9);
-plot(SK2(:,1),SK2(:,2),'linewidth',2);
-title ("SK2 current");
+     (list 0 0)
+     trace-names)
 
-subplot(3,4,10);
-plot(Na(:,1),Na(:,2),'linewidth',2);
-title ("Na current");
+    (end)
+    )
 
-subplot(3,4,11);
-plot(NaR(:,1),NaR(:,2),'linewidth',2);
-title ("NaR current");
 
-subplot(3,4,12);
-plot(NaP(:,1),NaP(:,2),'linewidth',2);
-title ("NaP current");
+(let ((args (command-line-arguments)))
 
-print  ("Golgi_Solinas08_NEURON_Vclamp.png", "-dpng", "-S1024,768", "-FCourier");
+  (let (
+	(model-name (first args))
+	(build-dir (second args))
+	)	   
+    (change-directory build-dir)
+            
+    (plot-traces model-name
+                 "Golgi Solinas 08 voltage clamp (NEURON)" 
+                '(Na NaR NaP KA KCa KM KV SK2 CaHVA CaLVA HCN1 HCN2) 
+                4 build-dir)
+
+    ))
