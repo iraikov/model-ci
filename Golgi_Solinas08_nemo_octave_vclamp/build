@@ -12,8 +12,8 @@ cd $BUILD_DIR
 echo $NEMO -p --octave --octave-method=odepkg Golgi_Solinas08.nemo
 $NEMO -p --octave --octave-method=odepkg Golgi_Solinas08.nemo
 
-echo $NEMO -p --vclamp-octave Golgi_Solinas08.nemo
-$NEMO -p --vclamp-octave Golgi_Solinas08.nemo
+echo $NEMO -p --vclamp-octave --octave-method=odepkg Golgi_Solinas08.nemo
+$NEMO -p --vclamp-octave  --octave-method=odepkg Golgi_Solinas08.nemo
 
 if test -x "$OCTAVEPP"; then
 for name in *.m; do 

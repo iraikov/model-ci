@@ -12,8 +12,8 @@ cd $BUILD_DIR
 echo $NEMO -p --octave --octave-method=odepkg Purkinje_Khaliq03.nemo
 $NEMO -p --octave --octave-method=odepkg Purkinje_Khaliq03.nemo
 
-echo $NEMO -p --vclamp-octave Purkinje_Khaliq03.nemo
-$NEMO -p --vclamp-octave Purkinje_Khaliq03.nemo
+echo $NEMO -p --vclamp-octave --octave-method=odepkg Purkinje_Khaliq03.nemo
+$NEMO -p --vclamp-octave --octave-method=odepkg Purkinje_Khaliq03.nemo
 
 if test -x "$OCTAVEPP"; then
 for name in *.m; do 
