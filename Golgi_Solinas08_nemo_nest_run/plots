@@ -24,7 +24,7 @@
 	 `(("title"           . "Solinas 2008 Golgi cell in NEST")
 	   ("titledetails"    . "size=14  align=C")
 	   ("rectangle"       . "1 1 8 4")
-	   ("xrange"          . "0 3000")
+	   ("xrange"          . "0 6000")
 	   ("yrange"          . "-80 65")
 	   ))
 
