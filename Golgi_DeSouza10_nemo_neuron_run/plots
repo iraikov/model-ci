@@ -59,7 +59,7 @@
 	(build-dir (second args))
 	)	   
 			
-    (plot-trace "Golgi_protocol" "DeSouza 2010 Golgi cell in NEURON" "Golgi_protocol.dat" build-dir)
     (plot-trace "Golgi_reduced_protocol" "DeSouza 2010 Golgi cell in NEURON (soma)" "Golgi_reduced_protocol.dat" build-dir)
+    (plot-trace "Golgi_protocol" "DeSouza 2010 Golgi cell in NEURON" "Golgi_protocol.dat" build-dir)
 
     ))
