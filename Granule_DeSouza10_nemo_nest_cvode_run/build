@@ -41,6 +41,7 @@ chmod u+x bootstrap.sh
 ./bootstrap.sh && \
 ./configure --with-nest=$NEST_DIR/bin/nest-config --with-sundials=$SUNDIALS_DIR/bin/sundials-config && \
 make && \
+make uninstall && \
 make install
 
 
