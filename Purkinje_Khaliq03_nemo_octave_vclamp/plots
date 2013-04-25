@@ -89,7 +89,7 @@
     (change-directory build-dir)
             
     (plot-traces model-name
-                 "Purkinje Khaliq 03 voltage clamp (NEURON)" 
+                 "Purkinje Khaliq 03 voltage clamp (Octave)" 
                 '(CaBK CaP K1 K2 K3 Ih Narsg)
                 3 build-dir)
 
