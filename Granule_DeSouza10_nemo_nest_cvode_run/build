@@ -12,29 +12,8 @@ cd $BUILD_DIR
 echo $NEMO --nest --nest-method=cvode Granule_DeSouza10.nemo
 $NEMO --nest --nest-method=cvode Granule_DeSouza10.nemo
 
-echo $NEMO --template=nestmodule_bootstrap.sh Granule_DeSouza10.nemo
-$NEMO --template=nestmodule_bootstrap.sh Granule_DeSouza10.nemo
-
-echo $NEMO --template=nestmodule_configure.ac Granule_DeSouza10.nemo
-$NEMO --template=nestmodule_configure.ac Granule_DeSouza10.nemo
-
-echo $NEMO --template=nestmodule_makefile.am Granule_DeSouza10.nemo
-$NEMO --template=nestmodule_makefile.am Granule_DeSouza10.nemo
-
-echo $NEMO --template=nestmodule.cpp Granule_DeSouza10.nemo
-$NEMO --template=nestmodule.cpp Granule_DeSouza10.nemo
-
-echo $NEMO --template=nestmodule.h Granule_DeSouza10.nemo
-$NEMO --template=nestmodule.h Granule_DeSouza10.nemo
-
-echo $NEMO --template=drop_odd_spike_connection.h Granule_DeSouza10.nemo
-$NEMO --template=drop_odd_spike_connection.h Granule_DeSouza10.nemo
-
-echo $NEMO --template=granulemodule.sli Granule_DeSouza10.nemo
-$NEMO --template=granulemodule.sli Granule_DeSouza10.nemo
-
-echo $NEMO --template=testrun.sli Granule_DeSouza10.nemo
-$NEMO --template=testrun.sli Granule_DeSouza10.nemo
+echo $NEMO --template=nestmodule_bootstrap.sh --template=nestmodule_configure.ac --template=nestmodule_makefile.am --template=nestmodule.cpp --template=nestmodule.h --template=drop_odd_spike_connection.h --template=granulemodule.sli --template=testrun.sli Granule_DeSouza10.nemo
+$NEMO --template=nestmodule_bootstrap.sh --template=nestmodule_configure.ac --template=nestmodule_makefile.am --template=nestmodule.cpp --template=nestmodule.h --template=drop_odd_spike_connection.h --template=granulemodule.sli --template=testrun.sli Granule_DeSouza10.nemo
 
 echo mv Granule_drop_odd_spike_connection.h drop_odd_spike_connection.h
 mv Granule_drop_odd_spike_connection.h drop_odd_spike_connection.h
