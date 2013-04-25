@@ -24,5 +24,3 @@ sleep 5
 
 echo qsub $tmpdir/sge_model_ci_job.sh
 qsub $tmpdir/sge_model_ci_job.sh
-
-

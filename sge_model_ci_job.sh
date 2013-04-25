@@ -21,7 +21,7 @@
 #$ -v PATH
 #$ -v LD_LIBRARY_PATH
 
-YMD_TIMESTAMP=`date +%Y-%m-%d`
+YMD_TIMESTAMP=`date +%Y/%m/%d`
 
 echo "============== Starting model-ci ===============" 
 cd SHAREDDIR
