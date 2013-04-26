@@ -21,7 +21,7 @@
 	    ))
 
    (proc "areadef"
-	 `(("title"           . "DeSouza 2010 Golgi cell in NEST")
+	 `(("title"           . "Solinas 2008 Golgi cell in NEST/CVODE")
 	   ("titledetails"    . "size=14  align=C")
 	   ("rectangle"       . "1 1 8 4")
 	   ("xrange"          . "0 6000")
