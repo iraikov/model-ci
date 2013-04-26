@@ -29,7 +29,3 @@ chmod u+x bootstrap.sh
 make && \
 make uninstall && \
 make install
-
-
-
-
