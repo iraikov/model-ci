@@ -1,0 +1,24 @@
+#!/bin/sh
+
+MODEL_NAME=$1
+BUILD_DIR=$2
+
+NEMO={{NEMO}}
+OCTAVEPP={{OCTAVEPP}}
+
+cd $BUILD_DIR
+
+
+echo $NEMO -p --octave --octave-method=odepkg Golgi_DeSouza10.nemo
+$NEMO -p --octave --octave-method=odepkg Golgi_DeSouza10.nemo
+
+echo $NEMO -p --vclamp-octave --octave-method=odepkg Golgi_DeSouza10.nemo
+$NEMO -p --vclamp-octave  --octave-method=odepkg Golgi_DeSouza10.nemo
+
+if test -x "$OCTAVEPP"; then
+for name in *.m; do 
+    cat $name | $OCTAVEPP > $name.tmp;
+    cat $name.tmp > $name
+    rm $name.tmp
+done
+fi

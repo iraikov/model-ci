@@ -1,0 +1,11 @@
+#!/bin/sh
+
+MODEL_NAME=$1
+BUILD_DIR=$2
+
+cd $BUILD_DIR
+
+for name in *_vclamp.m; do 
+    echo octave -q $name; 
+    octave -q $name; 
+done
