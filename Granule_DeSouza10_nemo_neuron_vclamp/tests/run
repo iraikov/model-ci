@@ -1,0 +1,13 @@
+#!/bin/sh
+
+MODEL_NAME=$1
+BUILD_DIR=$2
+
+NEURON_DIR={{NEURON_DIR}}
+
+cd $BUILD_DIR
+
+for name in *_vclamp.hoc; do 
+  echo nrngui -nogui $name -c "quit()"; 
+  nrngui -nogui $name -c "quit()"; 
+done
