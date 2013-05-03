@@ -14,8 +14,8 @@ $NEMO -p --nmodl --nmodl-method=derivimplicit --nmodl-kinetic=Na_z Granule_DeSou
 echo $NEMO -p --vclamp-hoc Granule_DeSouza10.nemo
 $NEMO -p --vclamp-hoc Granule_DeSouza10.nemo
 
-echo $NEMO --template=.hoc Granule_DeSouza10.nemo
-$NEMO --template=.hoc Granule_DeSouza10.nemo
+echo $NEMO -p --template=.hoc Granule_DeSouza10.nemo
+$NEMO -p --template=.hoc Granule_DeSouza10.nemo
 
 $NEURON_DIR/bin/nrnivmodl
 
