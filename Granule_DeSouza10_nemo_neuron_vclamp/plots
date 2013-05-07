@@ -90,7 +90,7 @@
             
     (plot-traces model-name
                  "Granule DeSouza 10 voltage clamp (NEURON)" 
-                '(CaHVA KA KCa Kir KM KV NA) 
+                '(CaHVA KA KCa Kir KM KV Na) 
                 4 build-dir)
 
     ))
