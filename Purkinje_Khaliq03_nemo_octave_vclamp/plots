@@ -90,7 +90,8 @@
             
     (plot-traces model-name
                  "Purkinje Khaliq 03 voltage clamp (Octave)" 
-                '(CaBK CaP K1 K2 K3 Ih Narsg)
+                '(;;Narsg
+                  CaBK CaP K1 K2 K3 Ih)
                 3 build-dir)
 
     ))

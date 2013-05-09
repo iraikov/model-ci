@@ -90,7 +90,8 @@
             
     (plot-traces model-name
                  "Granule DeSouza 10 voltage clamp (Octave)" 
-                '(CaHVA KA KCa Kir KM KV NA) 
+                '(;; Na
+                  CaHVA KA KCa_ca Kir KM KV) 
                 4 build-dir)
 
     ))

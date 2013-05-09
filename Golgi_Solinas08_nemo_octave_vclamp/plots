@@ -90,7 +90,8 @@
             
     (plot-traces model-name
                  "Golgi Solinas 08 voltage clamp (Octave)" 
-                '(Na NaR NaP KA KCa_ca KM KV SK2_ca CaHVA CaLVA HCN1 HCN2) 
+                '(;;Na NaR NaP
+                  KA KCa_ca KM KV SK2_ca CaHVA CaLVA HCN1 HCN2) 
                 4 build-dir)
 
     ))

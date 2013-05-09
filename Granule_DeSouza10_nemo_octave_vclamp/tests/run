@@ -5,6 +5,9 @@ BUILD_DIR=$2
 
 cd $BUILD_DIR
 
+# temporarily disable Na vclamp (problems with older versions of OdePkg)
+rm *Na_vclamp.m;
+
 for name in *_vclamp.m; do 
     echo octave -q $name; 
     octave -q $name; 
