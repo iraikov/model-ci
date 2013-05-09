@@ -1,0 +1,11 @@
+#!/bin/sh
+
+MODEL_NAME=$1
+BUILD_DIR=$2
+
+NEURON_DIR={{NEURON_DIR}}
+
+cd $BUILD_DIR
+echo $NEURON_DIR/bin/nrngui -nogui Golgi_netstim_protocol.hoc
+time $NEURON_DIR/bin/nrngui -nogui Golgi_netstim_protocol.hoc
+
