@@ -11,10 +11,9 @@ cd $BUILD_DIR
 echo $NEMO --nest --nest-method=gsl Golgi_Solinas08.nemo
 $NEMO --nest --nest-method=gsl Golgi_Solinas08.nemo
 
-echo $NEMO --template=nestmodule_bootstrap.sh --template=nestmodule_configure.ac --template=nestmodule_makefile.am --template=nestmodule.cpp --template=nestmodule.h --template=drop_odd_spike_connection.h --template=golgimodule.sli --template=testrun.sli Golgi_Solinas08.nemo
-$NEMO --template=nestmodule_bootstrap.sh --template=nestmodule_configure.ac --template=nestmodule_makefile.am --template=nestmodule.cpp --template=nestmodule.h --template=drop_odd_spike_connection.h --template=golgimodule.sli --template=testrun.sli Golgi_Solinas08.nemo
+echo $NEMO --template=nestmodule_bootstrap.sh --template=nestmodule_configure.ac --template=nestmodule_makefile.am --template=nestmodule.cpp --template=nestmodule.h --template=golgimodule.sli --template=testrun.sli Golgi_Solinas08.nemo
+$NEMO --template=nestmodule_bootstrap.sh --template=nestmodule_configure.ac --template=nestmodule_makefile.am --template=nestmodule.cpp --template=nestmodule.h --template=golgimodule.sli --template=testrun.sli Golgi_Solinas08.nemo
 
-mv Golgi_drop_odd_spike_connection.h drop_odd_spike_connection.h
 mv Golgi_nestmodule_bootstrap.sh  bootstrap.sh 
 mv Golgi_nestmodule_configure.ac  configure.ac
 mv Golgi_nestmodule_makefile.am   Makefile.am
