@@ -14,8 +14,14 @@ $NEMO -p --nmodl --nmodl-method=derivimplicit --nmodl-kinetic=SK2_z Golgi_DeSouz
 echo $NEMO --template=syn_template.hoc Golgi_DeSouza10.nemo
 $NEMO --template=syn_template.hoc Golgi_DeSouza10.nemo
 
+echo $NEMO --template=reduced_template.hoc Golgi_DeSouza10.nemo
+$NEMO --template=reduced_template.hoc Golgi_DeSouza10.nemo
+
 echo $NEMO --template=netstim_protocol.hoc Golgi_DeSouza10.nemo
 $NEMO --template=netstim_protocol.hoc Golgi_DeSouza10.nemo
+
+echo $NEMO --template=reduced_netstim_protocol.hoc Golgi_DeSouza10.nemo
+$NEMO --template=reduced_netstim_protocol.hoc Golgi_DeSouza10.nemo
 
 echo $NEMO --template=protocol.ses Golgi_DeSouza10.nemo
 $NEMO --template=protocol.ses Golgi_DeSouza10.nemo

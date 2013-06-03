@@ -60,5 +60,6 @@
 	)	   
 			
     (plot-trace "Golgi_netstim_protocol" "DeSouza 2010 Golgi cell in NEURON" "Golgi_netstim_protocol.dat" build-dir)
+    (plot-trace "Golgi_reduced_netstim_protocol" "DeSouza 2010 Golgi cell in NEURON" "Golgi_reduced_netstim_protocol.dat" build-dir)
 
     ))
