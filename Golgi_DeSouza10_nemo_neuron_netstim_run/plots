@@ -7,6 +7,8 @@
     (change-directory build-dir)   
     (init 'png (sprintf "~A.png" model-name))
 
+    (arg "-pagesize"    "20,24")
+
     (arg "-maxrows"     "800020")
     (arg "-maxfields"   "4500000")
     (arg "-maxvector"   "4500000")
@@ -19,7 +21,7 @@
    (proc "areadef"
 	 `(("title"           . ,title)
 	   ("titledetails"    . "size=14  align=C")
-	   ("rectangle"       . "1 1 8 4")
+	   ("rectangle"       . "1 6 10 10")
 	   ("xrange"          . "0 6100")
 	   ("yrange"          . "-80 65")
 	   ))
@@ -47,8 +49,42 @@
 	 `(("location" . "max-1 max")
 	   ("seglen"   . "0.2")
 	   ))
+
+
+   (proc "areadef"
+	 `(
+	   ("rectangle"       . "1 1 10 5")
+	   ("xrange"          . "3000 4000")
+	   ("yrange"          . "-80 65")
+	   ))
+
+
+   (proc "yaxis"
+	 `(("stubs"     . "inc 10")
+	   ("gridskip"  . "min")
+	   ))
+
+   (proc "xaxis"
+	 `(("stubs"     . "inc 500")
+	   ("gridskip"  . "min")
+	   
+	   ))
+
+   (proc "lineplot"
+	 `(("xfield"      . "time")
+	   ("yfield"      . "V")
+	   ("linedetails" . "color=red width=.5")
+	   ("legendlabel" . "V")
+	   ))
+   
+   (proc "legend"
+	 `(("location" . "max-1 max")
+	   ("seglen"   . "0.2")
+	   ))
+
    
    (end)
+
    )
 
 
