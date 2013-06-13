@@ -2,16 +2,10 @@
 
 (use srfi-1 posix ploticus)
 
-(let ((args (command-line-arguments)))
-
-  (let (
-	(model-name (first args))
-	(build-dir (second args))
-	)
-
+(define (plot-trace protocol-name title trace-file build-dir)
 
     (change-directory build-dir)   
-    (init 'png (sprintf "~A.png" model-name))
+    (init 'png (sprintf "~A.png" protocol-name))
 
     (arg "-pagesize"    "20,24")
 
@@ -20,12 +14,12 @@
     (arg "-maxvector"   "4500000")
     
     (proc "getdata"
-	  `(("file"            . ,(sprintf "~A.dat" "voltmeter-5-0"))
+	  `(("file"            . ,trace-file)
 	    ("fieldnames"      . "i time V")
 	    ))
 
    (proc "areadef"
-	 `(("title"           . "DeSouza 2010 Golgi cell in NEST/CVODE")
+	 `(("title"           . ,title)
 	   ("titledetails"    . "size=14  align=C")
 	   ("rectangle"       . "1 6 10 10")
 	   ("xrange"          . "0 6100")
@@ -55,7 +49,7 @@
 	 `(("location" . "max-1 max")
 	   ("seglen"   . "0.2")
 	   ))
-   
+
 
    (proc "areadef"
 	 `(
@@ -87,8 +81,29 @@
 	 `(("location" . "max-1 max")
 	   ("seglen"   . "0.2")
 	   ))
+
    
    (end)
 
-   ))
+   )
 
+
+(let ((args (command-line-arguments)))
+
+  (let (
+	(model-name (first args))
+	(build-dir (second args))
+	)	   
+
+    (for-each 
+     (lambda (x)			
+       (let* (
+              (id    (sprintf "Golgi_netstim_protocol_~A_Hz" x))
+              (fn    (sprintf "~A-5.0.dat" id))
+              (label (sprintf "DeSouza 2010 Golgi cell in NEST/CVODE (~A Hz)" x))
+              )
+       (plot-trace id label fn build-dir)
+       ))
+     '(1 20 50 100 200))
+
+    ))
