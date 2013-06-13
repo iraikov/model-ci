@@ -99,7 +99,7 @@
      (lambda (x)			
        (let* (
               (id    (sprintf "Golgi_netstim_protocol_~A_Hz" x))
-              (fn    (sprintf "~A-5.0.dat" id))
+              (fn    (sprintf "~A-5-0.dat" id))
               (label (sprintf "DeSouza 2010 Golgi cell in NEST/CVODE (~A Hz)" x))
               )
        (plot-trace id label fn build-dir)
