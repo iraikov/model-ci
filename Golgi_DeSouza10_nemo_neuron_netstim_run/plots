@@ -2,10 +2,10 @@
 
 (use srfi-1 posix ploticus)
 
-(define (plot-trace model-name title trace-file build-dir)
+(define (plot-trace protocol-name title trace-file build-dir)
 
     (change-directory build-dir)   
-    (init 'png (sprintf "~A.png" model-name))
+    (init 'png (sprintf "~A.png" protocol-name))
 
     (arg "-pagesize"    "20,24")
 
@@ -94,8 +94,20 @@
 	(model-name (first args))
 	(build-dir (second args))
 	)	   
-			
-    (plot-trace "Golgi_netstim_protocol" "DeSouza 2010 Golgi cell in NEURON" "Golgi_netstim_protocol.dat" build-dir)
-    (plot-trace "Golgi_reduced_netstim_protocol" "DeSouza 2010 Golgi cell in NEURON" "Golgi_reduced_netstim_protocol.dat" build-dir)
+
+    (for-each 
+     (lambda (x)			
+       (let* (
+              (id1    (sprintf "Golgi_netstim_protocol_~A_Hz" x))
+              (id2    (sprintf "Golgi_reduced_netstim_protocol_~A_Hz" x))
+              (fn1    (sprintf "~A.dat" id1))
+              (fn2    (sprintf "~A.dat" id2))
+              (label1 (sprintf "DeSouza 2010 Golgi cell in NEURON (~A Hz)" x))
+              (label2 (sprintf "Reduced DeSouza 2010 Golgi cell in NEURON (~A Hz)" x))
+              )
+       (plot-trace id1 label1 fn1 build-dir)
+       (plot-trace id2 label2 fn2 build-dir)
+       ))
+     '(1 20 50 100 200))
 
     ))
