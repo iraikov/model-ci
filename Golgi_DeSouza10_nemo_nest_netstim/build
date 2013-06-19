@@ -6,7 +6,7 @@ BUILD_DIR=$2
 NEMO={{NEMO}}
 NEST_DIR={{NEST_DIR}}
 SUNDIALS_DIR={{SUNDIALS_DIR}}
-{% with gsl_dir = default(GSL_DIR, '/usr')
+{% with gsl_dir = default(GSL_DIR, '/usr') %}
 GSL_DIR={{gsl_dir}}
 {% endwith %}
 
