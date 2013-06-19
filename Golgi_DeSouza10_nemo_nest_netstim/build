@@ -6,6 +6,9 @@ BUILD_DIR=$2
 NEMO={{NEMO}}
 NEST_DIR={{NEST_DIR}}
 SUNDIALS_DIR={{SUNDIALS_DIR}}
+{% with gsl_dir = default(GSL_DIR, '/usr')
+GSL_DIR={{gsl_dir}}
+{% endwith %}
 
 cd $BUILD_DIR
 
@@ -36,7 +39,7 @@ mv Golgi_golgimodule.sli          golgimodule.sli
 chmod u+x bootstrap.sh
 
 ./bootstrap.sh && \
-./configure --with-nest=$NEST_DIR/bin/nest-config && \
+LDFLAGS=-L$SUNDIALS_DIR/lib CXXFLAGS=-I$GSL_DIR/include ./configure --with-nest=$NEST_DIR/bin/nest-config && \
 make && \
 make uninstall && \
 make install
