@@ -11,8 +11,8 @@ cd $BUILD_DIR
 echo $NEMO -p --nmodl --nmodl-method=derivimplicit --nmodl-kinetic=Na_z Granule_DeSouza10.nemo
 $NEMO -p --nmodl --nmodl-method=derivimplicit --nmodl-kinetic=Na_z Granule_DeSouza10.nemo
 
-echo $NEMO --template=neuron_run.hoc Granule_DeSouza10.nemo
-$NEMO --template=neuron_run.hoc Granule_DeSouza10.nemo
+echo $NEMO --template=protocol.hoc Granule_DeSouza10.nemo
+$NEMO --template=protocol.hoc Granule_DeSouza10.nemo
 
 echo $NEMO --template=template.hoc Granule_DeSouza10.nemo
 $NEMO --template=template.hoc Granule_DeSouza10.nemo
