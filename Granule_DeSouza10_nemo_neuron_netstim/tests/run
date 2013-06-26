@@ -7,6 +7,6 @@ NEURON_DIR={{NEURON_DIR}}
 
 cd $BUILD_DIR
 
-echo $NEURON_DIR/bin/nrngui -nogui Granule_neuron_netstim.hoc
-time $NEURON_DIR/bin/nrngui -nogui Granule_neuron_netstim.hoc
+echo $NEURON_DIR/bin/nrngui -nogui Granule_netstim_protocol.hoc
+time $NEURON_DIR/bin/nrngui -nogui Granule_netstim_protocol.hoc
 
