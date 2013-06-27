@@ -1,0 +1,43 @@
+#!/bin/sh
+
+MODEL_NAME=$1
+BUILD_DIR=$2
+
+NEMO={{NEMO}}
+NEST_DIR={{NEST_DIR}}
+SUNDIALS_DIR={{SUNDIALS_DIR}}
+
+cd $BUILD_DIR
+
+echo $NEMO --nest --nest-method=cvode Granule_DeSouza10.nemo
+$NEMO --nest --nest-method=cvode Granule_DeSouza10.nemo
+
+echo $NEMO --template=nestmodule_bootstrap.sh --template=nestmodule_configure.ac --template=nestmodule_makefile.am --template=nestmodule.cpp --template=nestmodule.h --template=granulemodule.sli --template=testrun.sli Granule_DeSouza10.nemo
+$NEMO --template=nestmodule_bootstrap.sh --template=nestmodule_configure.ac --template=nestmodule_makefile.am --template=nestmodule.cpp --template=nestmodule.h --template=granulemodule.sli --template=testrun.sli Granule_DeSouza10.nemo
+
+
+echo mv Granule_nestmodule_bootstrap.sh  bootstrap.sh 
+mv Granule_nestmodule_bootstrap.sh  bootstrap.sh 
+
+echo mv Granule_nestmodule_configure.ac  configure.ac
+mv Granule_nestmodule_configure.ac  configure.ac
+
+echo mv Granule_nestmodule_makefile.am   Makefile.am
+mv Granule_nestmodule_makefile.am   Makefile.am
+
+echo mv Granule_nestmodule.cpp      granulemodule.cpp
+mv Granule_nestmodule.cpp           granulemodule.cpp
+
+echo mv Granule_nestmodule.h        granulemodule.h
+mv Granule_nestmodule.h             granulemodule.h
+
+echo mv Granule_granulemodule.sli     granulemodule.sli
+mv Granule_granulemodule.sli          granulemodule.sli
+
+chmod u+x bootstrap.sh
+
+./bootstrap.sh && \
+./configure --with-nest=$NEST_DIR/bin/nest-config --with-sundials=$SUNDIALS_DIR/bin/sundials-config && \
+make && \
+make uninstall && \
+make install
