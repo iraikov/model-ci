@@ -99,7 +99,7 @@
      (lambda (x)			
        (let* (
               (id    (sprintf "Granule_netstim_~A_Hz" x))
-              (fn    (sprintf "~A-5-0.dat" id))
+              (fn    (sprintf "~A-7-0.dat" id))
               (label (sprintf "DeSouza 2010 Granule cell in NEST/CVODE (~A Hz)" x))
               )
        (plot-trace id label fn build-dir)
