@@ -1,5 +1,7 @@
 #!/bin/sh
 
+. $HOME/.profile
+
 TIMESTAMP=`date +%a%d%b%Y_%H%M`
 
 tmpdir=$HOME/work/tmp/model-ci.${TIMESTAMP}
@@ -22,5 +24,7 @@ sed s#SHAREDDIR#${tmpdir}#g $HOME/src/model/model-ci/model-ci.tombo.config > \
 
 sleep 5
 
-echo qsub $tmpdir/sge_model_ci_job.sh
-qsub $tmpdir/sge_model_ci_job.sh
+QSUB=/gridware/sge/bin/lx24-amd64/qsub
+
+echo $QSUB $tmpdir/sge_model_ci_job.sh
+$QSUB $tmpdir/sge_model_ci_job.sh
