@@ -18,8 +18,8 @@ $NEMO --template=nestmodule_bootstrap.sh --template=nestmodule_configure.ac --te
 echo mv Golgi_nestmodule_bootstrap.sh  bootstrap.sh 
 mv Golgi_nestmodule_bootstrap.sh  bootstrap.sh 
 
-echo mv Golgi_nestmodule_configure.ac  configure.ac
-mv Golgi_nestmodule_configure.ac  configure.ac
+echo mv Golgi_nestmodule_configure_cvode.ac  configure.ac
+mv Golgi_nestmodule_configure_cvode.ac  configure.ac
 
 echo mv Golgi_nestmodule_makefile.am   Makefile.am
 mv Golgi_nestmodule_makefile.am   Makefile.am
