@@ -1,0 +1,9 @@
+#!/bin/sh
+
+MODEL_NAME=$1
+VERSION=$2
+BUILD_DIR=$3
+
+echo svn export --username=anonymous --password='' -r $VERSION  https://code.call-cc.org/svn/chicken-eggs/release/4/nemo/trunk/examples/Granule/Granule_DeSouza10.nemo $BUILD_DIR/Granule_DeSouza10.nemo
+svn export --username=anonymous --password='' -r $VERSION  https://code.call-cc.org/svn/chicken-eggs/release/4/nemo/trunk/examples/Granule/Granule_DeSouza10.nemo $BUILD_DIR/Granule_DeSouza10.nemo
+
