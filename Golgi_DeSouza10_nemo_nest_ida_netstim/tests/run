@@ -8,6 +8,7 @@ SUNDIALS_DIR={{SUNDIALS_DIR}}
 
 cd $BUILD_DIR
 
+LD_PRELOAD="libsundials_ida.so libsundials_nvecserial.so libblas.so liblapack.so" \
 LD_LIBRARY_PATH=$SUNDIALS_DIR/lib:$NEST_DIR/lib/nest time $NEST_DIR/bin/nest Golgi_netstim.sli
 
 

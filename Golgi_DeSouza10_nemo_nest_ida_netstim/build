@@ -12,8 +12,8 @@ cd $BUILD_DIR
 echo $NEMO --nest --nest-method=ida Golgi_DeSouza10.nemo
 $NEMO --nest --nest-method=ida Golgi_DeSouza10.nemo
 
-echo $NEMO --template=nestmodule_bootstrap.sh --template=nestmodule_configure_ida.ac --template=nestmodule_makefile.am --template=nestmodule.cpp --template=nestmodule.h --template=golgimodule.sli --template=netstim.sli Golgi_DeSouza10.nemo
-$NEMO --template=nestmodule_bootstrap.sh --template=nestmodule_configure_ida.ac --template=nestmodule_makefile.am --template=nestmodule.cpp --template=nestmodule.h --template=golgimodule.sli --template=netstim.sli Golgi_DeSouza10.nemo
+echo $NEMO --template=nestmodule_bootstrap.sh --template=nestmodule_configure_ida.ac --template=nestmodule_makefile_sundials.am --template=nestmodule.cpp --template=nestmodule.h --template=golgimodule.sli --template=netstim.sli Golgi_DeSouza10.nemo
+$NEMO --template=nestmodule_bootstrap.sh --template=nestmodule_configure_ida.ac --template=nestmodule_makefile_sundials.am --template=nestmodule.cpp --template=nestmodule.h --template=golgimodule.sli --template=netstim.sli Golgi_DeSouza10.nemo
 
 echo mv Golgi_nestmodule_bootstrap.sh  bootstrap.sh 
 mv Golgi_nestmodule_bootstrap.sh  bootstrap.sh 
@@ -21,8 +21,8 @@ mv Golgi_nestmodule_bootstrap.sh  bootstrap.sh
 echo mv Golgi_nestmodule_configure_ida.ac  configure.ac
 mv Golgi_nestmodule_configure_ida.ac  configure.ac
 
-echo mv Golgi_nestmodule_makefile.am   Makefile.am
-mv Golgi_nestmodule_makefile.am   Makefile.am
+echo mv Golgi_nestmodule_makefile_sundials.am   Makefile.am
+mv Golgi_nestmodule_makefile_sundials.am   Makefile.am
 
 echo mv Golgi_nestmodule.cpp           golgimodule.cpp
 mv Golgi_nestmodule.cpp           golgimodule.cpp

@@ -8,7 +8,8 @@ NEST_DIR={{NEST_DIR}}
 cd $BUILD_DIR
 
 echo LD_LIBRARY_PATH=$NEST_DIR/lib/nest time $NEST_DIR/bin/nest Granule_testrun.sli
-LD_PRELOAD="libsundials_cvode.so libsundials_nvecserial.so libblas.so liblapack.so" LD_LIBRARY_PATH=$NEST_DIR/lib/nest time $NEST_DIR/bin/nest Granule_testrun.sli
+LD_PRELOAD="libsundials_cvode.so libsundials_nvecserial.so libblas.so liblapack.so" \
+LD_LIBRARY_PATH=$NEST_DIR/lib/nest time $NEST_DIR/bin/nest Granule_testrun.sli
 
 
 

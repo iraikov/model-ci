@@ -12,8 +12,8 @@ cd $BUILD_DIR
 echo $NEMO --nest --nest-method=ida Granule_DeSouza10.nemo
 $NEMO --nest --nest-method=ida Granule_DeSouza10.nemo
 
-echo $NEMO --template=nestmodule_bootstrap.sh --template=nestmodule_configure_ida.ac --template=nestmodule_makefile.am --template=nestmodule.cpp --template=nestmodule.h --template=granulemodule.sli --template=netstim.sli Granule_DeSouza10.nemo
-$NEMO --template=nestmodule_bootstrap.sh --template=nestmodule_configure_ida.ac --template=nestmodule_makefile.am --template=nestmodule.cpp --template=nestmodule.h --template=granulemodule.sli --template=netstim.sli Granule_DeSouza10.nemo
+echo $NEMO --template=nestmodule_bootstrap.sh --template=nestmodule_configure_ida.ac --template=nestmodule_makefile_sundials.am --template=nestmodule.cpp --template=nestmodule.h --template=granulemodule.sli --template=netstim.sli Granule_DeSouza10.nemo
+$NEMO --template=nestmodule_bootstrap.sh --template=nestmodule_configure_ida.ac --template=nestmodule_makefile_sundials.am --template=nestmodule.cpp --template=nestmodule.h --template=granulemodule.sli --template=netstim.sli Granule_DeSouza10.nemo
 
 
 echo mv Granule_nestmodule_bootstrap.sh  bootstrap.sh 
@@ -22,8 +22,8 @@ mv Granule_nestmodule_bootstrap.sh  bootstrap.sh
 echo mv Granule_nestmodule_configure_ida.ac  configure.ac
 mv Granule_nestmodule_configure_ida.ac  configure.ac
 
-echo mv Granule_nestmodule_makefile.am   Makefile.am
-mv Granule_nestmodule_makefile.am   Makefile.am
+echo mv Granule_nestmodule_makefile_sundials.am   Makefile.am
+mv Granule_nestmodule_makefile_sundials.am   Makefile.am
 
 echo mv Granule_nestmodule.cpp      granulemodule.cpp
 mv Granule_nestmodule.cpp           granulemodule.cpp
